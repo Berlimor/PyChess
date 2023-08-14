@@ -2,8 +2,8 @@ import pygame
 
 class Square():
     def __init__(self, x: int, y: int, width_cell: int, height_cell: int) -> None:
-        self.x = x #Row
-        self.y = y #Column
+        self.x = x #Column
+        self.y = y #Row
         self.pos = (x, y)
 
         self.width_cell = width_cell
@@ -29,9 +29,9 @@ class Square():
 
 
     #Get the fomlal name of the square
-    def get_position(self):
+    def get_position(self) -> str:
         columns = 'abcdefgh'
-        return (columns[self.x], self.y + 1)
+        return columns[self.x] + str(self.y + 1)
     
     #Get the color of the square
     def draw(self, display):
