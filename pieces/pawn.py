@@ -9,7 +9,6 @@ class Pawn(Piece):
         super().__init__(pos, color, board)
         self.name = 'P'
         self.has_moved = False
-        self.row, self.col = pos
 
     def get_moves(self, board: Board) -> list[Tile]:
         moves = []
@@ -60,3 +59,6 @@ class Pawn(Piece):
         self.has_moved = True
         self.row, self.col = dest_pos
         dest_tile.piece = self
+
+        # Check if the position allows this pawn to turn into the Queen
+        ...

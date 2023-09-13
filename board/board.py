@@ -67,3 +67,9 @@ class Board:
     def select_by_click(self) -> None:
         click_pos = pygame.mouse.get_pos()
         ...
+
+    def is_in_check(self) -> bool:
+        ...
+
+    def is_in_checkmate(self) -> bool:
+        ...
