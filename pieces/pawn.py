@@ -30,11 +30,11 @@ class Pawn(Piece):
                 moves.append(board.get_tile_by_pos((self.x - 1, self.y + 1)))
 
         else: 
-            if self.x + 1 <= 8:
+            if self.x + 1 < 8:
                 tile = board.get_tile_by_pos((self.x + 1, self.y))
                 if tile.piece is None:
                     moves.append(tile)
-            if not self.has_moved & self.x + 2 <= 8:
+            if not self.has_moved & self.x + 2 < 8:
                 tile = board.get_tile_by_pos((self.x + 2, self.y))
                 if tile.piece is None:
                     moves.append(tile)
@@ -48,8 +48,10 @@ class Pawn(Piece):
         return moves
     
     
-    def move(self, dest_pos: tuple, board: Board) -> None:
+    def move(self, dest_pos: tuple, board: Board, moves: list[Tile]) -> None:
         dest_tile = board.get_tile_by_pos(dest_pos)
+        if dest_tile not in moves:
+            return
         if dest_tile.piece != None:
             eaten_piece = dest_tile.piece
             board.eaten_pieces.append(eaten_piece)

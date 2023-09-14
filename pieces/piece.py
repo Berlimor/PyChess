@@ -12,8 +12,10 @@ class Piece:
         self.selected = False
 
 
-    def move(self, dest_pos: tuple, board: Board) -> None:
+    def move(self, dest_pos: tuple, board: Board, moves: list[Tile]) -> None:
         dest_tile = board.get_tile_by_pos(dest_pos)
+        if dest_tile not in moves:
+            return
         if dest_tile.piece != None:
             eaten_piece = dest_tile.piece
             board.eaten_pieces.append(eaten_piece)
